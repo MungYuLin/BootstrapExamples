@@ -1,0 +1,171 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="bs-example">
+            <div class="col-md-6">
+                <span class="bg-info">实例1：默认警告框实例</span>
+                <hr>
+                <div class="alert alert-success" role="alert">
+                    Well done! You successfully read this important alert message.
+                </div>
+                <div class="alert alert-info" role="alert">
+                    Heads up! This alert needs your attention, but it's not super important.
+                </div>
+                <div class="alert alert-warning" role="alert">Warning! Better check yourself, you're not looking too good.</div>
+                <div class="alert alert-danger" role="alert">Oh snap! Change a few things up and try submitting again.</div>
+            </div>
+        </div>
+        <div class="bs-example">
+            <div class="col-md-6">
+                <span class="bg-info">实例2：可关闭警告框实例</span>
+                <hr>
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button> <strong>Warning!</strong>
+                    Better check yourself, you're not looking too good.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="bs-example">
+            <div class="col-md-6">
+                <span class="bg-info">实例3：自定义警告框实例</span>
+                <hr>
+                <div id="infoBlockAlert" class="alert alert-info" role="alert">
+                    <button id="closeAlertInfo" type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <span id="txtPrompt">
+                        点击下面按钮，切换警告框样式&hellip;
+                        <br/>
+                        该警告框关闭点击按钮可重新打开&hellip;
+                    </span>
+                </div>
+                <button type="button" class="btn btn-success" id="alertBoxSuccess">成功警告框</button>
+                <button type="button" class="btn btn-info" id="alertBoxInfo">信息警告框</button>
+                <button type="button" class="btn btn-warning" id="alertBoxWarning">注意警告框</button>
+                <button type="button" class="btn btn-danger" id="alertBoxDanger">错误警告框</button>
+            </div>
+        </div>
+        <div class="bs-example">
+            <div class="col-md-6">
+                <span class="bg-info">实例4：自定义警告框实例</span>
+                <hr>
+                <div id="myAlert1" class="alert alert-success" role="alert">
+                    <span>该警告框在20秒后将自动关闭&hellip;</span>
+                </div>
+                <div id="myAlert2" class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"  aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <span>该警告框在30秒后将自动关闭，也可点击关闭按钮进行手动关闭&hellip;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var type = {
+    success: 0,
+    info: 1,
+    warning: 2,
+    danger: 3
+}
+
+setTimeout(function() {
+    $("#myAlert1").alert('close');
+}, 20000);
+
+setTimeout(function() {
+    $("#myAlert2").alert('close');
+}, 30000);
+
+//成功警告框
+$("#alertBoxSuccess").click(function(event) {
+    toggleAlertClass(type.success, event.target.innerHTML);
+});
+
+//信息警告框
+$("#alertBoxInfo").click(function(event) {
+    toggleAlertClass(type.info, event.target.innerHTML);
+});
+
+//注意警告框
+$("#alertBoxWarning").click(function(event) {
+    toggleAlertClass(type.warning, event.target.innerHTML);
+});
+
+//错误警告框
+$("#alertBoxDanger").click(function(event) {
+    toggleAlertClass(type.danger, event.target.innerHTML);
+});
+
+//修改警告框关闭按钮事件，点击时隐藏
+$("#closeAlertInfo").click(function () {
+    $("#infoBlockAlert").hide();
+    //需移除警告框关闭按钮中的data-dismiss="alert"属性
+})
+
+//切换警告框状态
+function toggleAlertClass(no, str) {
+    $("#txtPrompt").html(str);
+    $("#infoBlockAlert").show();
+    if (no === type.success) {//成功警告框 绿
+        if (!$("#infoBlockAlert").hasClass("alert-success")) {
+            $("#infoBlockAlert").addClass("alert-success");
+        }
+        if ($("#infoBlockAlert").hasClass("alert-info")) {
+            $("#infoBlockAlert").removeClass("alert-info");
+        }
+        if ($("#infoBlockAlert").hasClass("alert-warning")) {
+            $("#infoBlockAlert").removeClass("alert-warning");
+        }
+        if ($("#infoBlockAlert").hasClass("alert-danger")) {
+            $("#infoBlockAlert").removeClass("alert-danger");
+        }
+    }
+    else if (no === type.info) {//信息警告框 蓝
+        if ($("#infoBlockAlert").hasClass("alert-success")) {
+            $("#infoBlockAlert").removeClass("alert-success");
+        }
+        if (!$("#infoBlockAlert").hasClass("alert-info")) {
+            $("#infoBlockAlert").addClass("alert-info");
+        }
+        if ($("#infoBlockAlert").hasClass("alert-warning")) {
+            $("#infoBlockAlert").removeClass("alert-warning");
+        }
+        if ($("#infoBlockAlert").hasClass("alert-danger")) {
+            $("#infoBlockAlert").removeClass("alert-danger");
+        }
+    }
+    else if (no === type.warning) {//注意警告框 黄
+        if ($("#infoBlockAlert").hasClass("alert-success")) {
+            $("#infoBlockAlert").removeClass("alert-success");
+        }
+        if ($("#infoBlockAlert").hasClass("alert-info")) {
+            $("#infoBlockAlert").removeClass("alert-info");
+        }
+        if (!$("#infoBlockAlert").hasClass("alert-warning")) {
+            $("#infoBlockAlert").addClass("alert-warning");
+        }
+        if ($("#infoBlockAlert").hasClass("alert-danger")) {
+            $("#infoBlockAlert").removeClass("alert-danger");
+        }
+    }
+    else if (no === type.danger) {//错误警告框 红
+        if ($("#infoBlockAlert").hasClass("alert-success")) {
+            $("#infoBlockAlert").removeClass("alert-success");
+        }
+        if ($("#infoBlockAlert").hasClass("alert-info")) {
+            $("#infoBlockAlert").removeClass("alert-info");
+        }
+        if ($("#infoBlockAlert").hasClass("alert-warning")) {
+            $("#infoBlockAlert").removeClass("alert-warning");
+        }
+        if (!$("#infoBlockAlert").hasClass("alert-danger")) {
+            $("#infoBlockAlert").addClass("alert-danger");
+        }
+    }
+}
+</script>

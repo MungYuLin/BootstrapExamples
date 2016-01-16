@@ -1,0 +1,50 @@
+/*设置全局样式*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
+    font-family: 'Microsoft YaHei', '宋体' , 'Tahoma', 'Helvetica', 'Arial', "\5b8b\4f53", 'sans-serif';
+}
+
+/*顶部导航栏置顶后需添加内补*/
+body {
+    padding-top: 50px;
+    margin-bottom: 60px;
+}
+
+/*去除首页tab标签两侧的padding*/
+body div.container-fluid div.col-md-12 {
+  padding: 0px;
+}
+
+/*设置用户边距和弹出位置*/
+.username {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+.username + ul {
+    top: 50px;
+}
+
+/* footer css */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #101010;
+}
+
+.footer .text-muted {
+  color: #9d9d9d;
+  text-align: center;
+  margin: 5px;
+}
+
+.bs-example {
+    border:1px solid #e5e5e5;
+    padding: 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}

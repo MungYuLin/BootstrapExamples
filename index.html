@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="scripts/css/main.css" type="text/css" media="screen" />
+    <title>Bootstrap使用實例</title>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation" ms-controller="menus">
+      <div class="container">
+        <div class="navbar-header">
+          <!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- 确保无论是宽屏还是窄屏，navbar-brand都显示 -->
+          <a href="##" class="navbar-brand">Bootstrap</a>
+        </div>
+        <!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">
+          <ul class="nav navbar-nav navbar-lift" ms-each="datas">
+            <li ms-if="el.child == null">
+              <a href="#" ms-attr-addtabs="el.code"  ms-attr-url="el.url" ajax="true" ms-attr-title ="el.name">{{el.name}}</a>
+            </li>
+            <li class="dropdown" ms-if="el.child != null">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                {{el.name}}
+                <span class="caret" ms-if="el.child != null"></span>
+              </a>
+              <ul class="dropdown-menu" ms-if="el.child != null">
+                <li ms-repeat-elem="el.child">
+                  <a href="#" ms-attr-addtabs="elem.code" ms-attr-url="elem.url" ajax="true" ms-attr-title ="elem.name">{{elem.name}}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle username" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <img alt="" class="img-circle" src="scripts/img/avatar_small.png"/>
+                用户名
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    修改密码
+                  </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <a href="#">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                    锁定
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                    退出
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="tabs">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist" style="background-color: #eee">
+              <li id="tabOpMenm" class="pider-vertical" style="float: right">
+                <div class="btn-group">
+                  <button id="btnCloseCurrentTab"   class="btn red btn-primary" type="button" value="abcdefg" style="height: 38px">关闭</button>
+                  <button class="btn dropdown-toggle" data-toggle="dropdown" style="background-color: #eee; height: 38px">
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a tabindex="-1" href="#" id="btnCloseTab">关闭</a>
+                    </li>
+                    <li>
+                      <a tabindex="-1" href="#" id="btnCloseOtherTabs">关闭其它</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <!-- Tab panes -->
+            <div  class="tab-content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">MungYuLin.io</p>
+      </div>
+    </footer>
+    <script data-main="scripts/app.js" src="scripts/requirejs/require.min.js"></script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-/*设置全局样式*/
+/* 设置全局样式 */
 html {
   position: relative;
   min-height: 100%;
@@ -7,24 +7,29 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     font-family: 'Microsoft YaHei', '宋体' , 'Tahoma', 'Helvetica', 'Arial', "\5b8b\4f53", 'sans-serif';
 }
 
-/*顶部导航栏置顶后需添加内补*/
+/* 顶部导航栏置顶后需添加内补 */
 body {
     padding-top: 50px;
     margin-bottom: 60px;
 }
 
-/*去除首页tab标签两侧的padding*/
+/* 去除首页tab标签两侧的padding */
 body div.container-fluid div.col-md-12 {
   padding: 0px;
 }
 
-/*设置用户边距和弹出位置*/
+/* 设置用户边距和弹出位置 */
 .username {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
 }
 .username + ul {
     top: 50px;
+}
+
+/* tab增加上外邊距 */
+.tab-content {
+  padding-top: 10px;
 }
 
 /* footer css */
@@ -42,9 +47,11 @@ body div.container-fluid div.col-md-12 {
   margin: 5px;
 }
 
-.bs-example {
-    border:1px solid #e5e5e5;
-    padding: 10px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+/* 栅格系统 */
+.show-grid [class^=col-] {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #eee;
+    border: 1px solid #ddd;
 }

@@ -1,27 +1,27 @@
+/* 登录页配置 */
 requirejs.config({
-  urlArgs: "v=" + (new Date()).getTime(),
+  urlArgs: 'v=' + (new Date()).getTime(),
   baseUrl: 'scripts',
   shim: {
     'jquery': {
       exports: 'jQuery',
     },
-    'history': {
-      deps: ['avalon']
-    },
-    'tabs': {
-      deps: ['jquery']
-    },
     'bootstrap': {
       deps: ['jquery']
+    },
+    'avalon': {
+      deps: ['bootstrap']
+    },
+    'login': {
+      deps: ['avalon', 'js/config']
     }
   },
   paths: {
     jquery: ['http://cdn.staticfile.org/jquery/2.1.4/jquery.min', 'jquery-2.1.4/jquery.min'],
     bootstrap: "bootstrap-3.3.5/js/bootstrap.min",
-    tabs: "js/bootstrap-addtabs",
-    avalon: 'avalon/avalon'
+    avalon: 'avalon/avalon',
+    login: 'js/login',
   },
-  waitSeconds: 15
 });
 
-require(['js/main', 'js/event', 'js/config'])
+require(['jquery', 'bootstrap', 'avalon', "login"]);

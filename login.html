@@ -11,31 +11,17 @@
 <body class="signin">
     <div class="container">
         <h2 class="signin-heading">Bootstrap使用實例</h2>
-        <form class="form-signin" ms-controller="signin">
+        <form class="form-signin" ms-controller="loginVM">
             <label for="inputUserID" class="sr-only">账户</label>
-            <input type="text" id="inputUserID" class="form-control" placeholder="请输入账户ID" ms-duplex="userCode" required autofocus>
+            <input type="text" id="inputUserID" class="form-control" placeholder="请输入账户" ms-duplex="LoginName" required autofocus>
             <label for="inputPassword" class="sr-only">密码</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="请输入密码" ms-duplex="userName" required>
+            <input type="password" id="inputPassword" class="form-control" placeholder="请输入密码" ms-duplex="LoginPwd" required>
             <div class="checkbox">
                 <label><input type="checkbox" value="remember-me">记住密码</label>
             </div>
             <button type="button" class="btn btn-lg btn-primary btn-block" ms-click="login()">登陆</button>
         </form>
-
     </div>
-    <script src="scripts/jquery-2.1.4/jquery.min.js"></script>
-    <script src="scripts/avalon/avalon.js"></script>
-    <script type="text/javascript">
-        avalon.ready(function() {
-            var vm = avalon.define({
-                $id: "signin",
-                userCode: "",
-                userName: "",
-                login: function() {
-                    window.location = "index.html";
-                }
-            })
-        });
-    </script>
+    <script data-main="scripts/sub.js" src="scripts/requirejs/require.min.js"></script>
 </body>
 </html>

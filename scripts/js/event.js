@@ -1,9 +1,48 @@
 //初始化菜单项
-require(['jquery', 'avalon'], function($, _){
+require(['jquery', 'avalon', 'tabs'], function($, _) {
+
+    $(function() {
+        $('#tabs').addtabs();
+        //多个Model重叠支持
+        $('.modal').on('show.bs.modal', '.modal', function(event) {
+            $(this).appendTo($('body'));
+        }).on('shown.bs.modal', '.modal.in', function(event) {
+            setModalsAndBackdropsOrder();
+        }).on('hidden.bs.modal', '.modal', function(event) {
+            setModalsAndBackdropsOrder();
+        });
+
+        function setModalsAndBackdropsOrder() {
+            var modalZIndex = 1040;
+            $('.modal.in').each(function(index) {
+                var $modal = $(this);
+                modalZIndex++;
+                $modal.css('zIndex', modalZIndex);
+                $modal.next('.modal-backdrop.in').addClass('hidden').css('zIndex', modalZIndex - 1);
+            });
+            $('.modal.in:visible:last').focus().next('.modal-backdrop.in').removeClass('hidden');
+        }
+    })
+
     avalon.ready(function() {
-        //目前仅支持二级菜单
-        var menus = avalon.define({
-            $id: "menus",
+        var homeVM = avalon.define({
+            $id: "homeVM",
+            OldPassword: "",
+            NewPassword: "",
+            ConfirmNewPassword: "",
+            passwork: function() {
+                //
+            },
+            lock: function() {
+                //
+            },
+            exit: function() {
+                window.location.href = 'login.html';
+            }
+        })
+        //仅支持二级菜单
+        var menusVM = avalon.define({
+            $id: "menusVM",
             datas: [{
                     code: 'M0001',
                     name: '首頁',
@@ -12,12 +51,12 @@ require(['jquery', 'avalon'], function($, _){
                 {
                     code: 'M0002',
                     name: '柵格系統',
-                    url: '#'
+                    url: 'view/grid.html'
                 },
                 {
                     code: 'M0003',
                     name: '排版',
-                    url: '#'
+                    url: 'view/type.html'
                 },
                 {
                     code: 'M0004',
@@ -26,11 +65,11 @@ require(['jquery', 'avalon'], function($, _){
                     child: [{
                         code: 'M0041',
                         name: '面板',
-                        url: 'view/panel.html'
+                        url: 'view/panels.html'
                     },{
                         code: 'M0042',
                         name: '表单',
-                        url: 'view/form.html'
+                        url: 'view/forms.html'
                     },{
                         code: 'M0043',
                         name: '按钮',
@@ -46,18 +85,18 @@ require(['jquery', 'avalon'], function($, _){
                     },{
                         code: 'M0045',
                         name: '表格',
-                        url: 'view/table.html'
+                        url: 'view/tables.html'
                     }]
                 },
                 {
                     code: 'M0006',
                     name: '模态框',
-                    url: 'view/model.html'
+                    url: 'view/modals.html'
                 },
                 {
                     code: 'M0007',
                     name: '警告框',
-                    url: 'view/prompt.html'
+                    url: 'view/alerts.html'
                 }
             ]
         });

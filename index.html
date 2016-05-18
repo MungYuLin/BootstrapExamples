@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="scripts/css/main.css" type="text/css" media="screen" />
     <title>Bootstrap使用實例</title>
   </head>
-  <body>
-    <div class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation" ms-controller="menus">
+  <body ms-controller="homeVM">
+    <div class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
@@ -23,7 +23,7 @@
           <a href="##" class="navbar-brand">Bootstrap</a>
         </div>
         <!-- 屏幕宽度小于768px时，div.navbar-responsive-collapse容器里的内容都会隐藏，显示icon-bar图标，当点击icon-bar图标时，再展开。屏幕大于768px时，默认显示。 -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse" ms-controller="menusVM">
           <ul class="nav navbar-nav navbar-lift" ms-each="datas">
             <li ms-if="el.child == null">
               <a href="#" ms-attr-addtabs="el.code"  ms-attr-url="el.url" ajax="true" ms-attr-title ="el.name">{{el.name}}</a>
@@ -49,20 +49,20 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a href="#">
+                  <a data-toggle="modal" data-target="#passworkModel">
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                     修改密码
                   </a>
                 </li>
                 <li role="separator" class="divider"></li>
                 <li>
-                  <a href="#">
+                  <a ms-click="lock()">
                     <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
                     锁定
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a ms-click="exit()">
                     <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                     退出
                   </a>
@@ -98,6 +98,66 @@
             </ul>
             <!-- Tab panes -->
             <div  class="tab-content"></div>
+          </div>
+
+          <!-- 修改密码Model -->
+          <div id="passworkModel" class="modal fade" tabindex="-1" role="dialog">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+                      </div>
+                      <div class="modal-body">
+                          <form class="form-horizontal" role="form">
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">旧密码</label>
+                                  <div class="col-sm-9">
+                                      <input type="password" class="form-control" style="width:250px;" ms-duplex="OldPassword">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">新密码</label>
+                                  <div class="col-sm-9">
+                                      <input type="password" class="form-control" style="width:250px;" ms-duplex="NewPassword">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-3 control-label">确认新密码</label>
+                                  <div class="col-sm-9">
+                                      <input type="password" class="form-control" style="width:250px;" ms-duplex="ConfirmNewPassword">
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-success" ms-click="passwork()">保存</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- 提示Model -->
+          <div id="alertModel-MessageBox" class="modal" tabindex="-1" role="dialog">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                          <h5 class="modal-title">[Title]</h5>
+                      </div>
+                      <div class="modal-body">
+                          <span class="[Icon]" style="font-size:40px; vertical-align:middle; color: [Color]"></span>
+                          <small>[Message]</small>
+                      </div>
+                      <div class="modal-footer" >
+                          <button type="button" class="btn btn-primary btn-sm ok" data-dismiss="modal">[BtnOk]</button>
+                          <button type="button" class="btn btn-default btn-sm cancel" data-dismiss="modal">[BtnCancel]</button>
+                      </div>
+                  </div>
+              </div>
           </div>
         </div>
       </div>

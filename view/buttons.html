@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">实例1：按钮样式</h3>
+                </div>
+                <div class="panel-body">
+                    <button type="button" class="btn btn-default" aria-label="Left Align">默认</button>
+                    <button type="button" class="btn btn-warning" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        警告
+                    </button>
+                    <button type="button" class="btn btn-danger" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        删除
+                    </button>
+                    <button type="button" class="btn btn-info" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        修改
+                    </button>
+                    <button type="button" class="btn btn-primary" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        新增
+                    </button>
+                    <button type="button" class="btn btn-success" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                        保存
+                    </button>
+                    <button type="button" class="btn btn-link" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                        链接
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">实例2：按钮大小设置</h3>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        <button type="button" class="btn btn-primary btn-lg">btn btn-primary btn-lg</button>
+                        <button type="button" class="btn btn-default btn-lg">btn btn-default btn-lg</button>
+                    </p>
+                    <p>
+                        <button type="button" class="btn btn-primary">btn btn-primary</button>
+                        <button type="button" class="btn btn-default">btn btn-default</button>
+                    </p>
+                    <p>
+                        <button type="button" class="btn btn-primary btn-sm">btn btn-primary btn-sm</button>
+                        <button type="button" class="btn btn-default btn-sm">btn btn-default btn-sm</button>
+                    </p>
+                    <p>
+                        <button type="button" class="btn btn-primary btn-xs">btn btn-primary btn-xs</button>
+                        <button type="button" class="btn btn-default btn-xs">btn btn-default btn-xs</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">实例3：按钮状态设置</h3>
+                </div>
+                <div class="panel-body">
+                    <button type="button" class="btn btn-default btn-block">块按钮：btn-block</button>
+                    <button type="button" class="btn btn-default active">激活按钮：active</button>
+                    <button type="button" class="btn btn-default disabled">禁用按钮：disabled</button>
+                    <a href="#" class="btn btn-primary disabled" role="button">链接</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">实例4：jQuery按钮</h3>
+                </div>
+                <div class="panel-body">
+                    <button type="button" id="myButton" data-loading-text="加载中~" class="btn btn-primary" autocomplete="off">加载状态</button>
+                    <button type="button" id="myStateButton" data-complete-text="已点击" class="btn btn-primary" autocomplete="off">点击后切换名称</button>
+                    <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">切换状态</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#myButton').on('click', function () {
+        var $btn = $(this).button('loading');
+        setTimeout(function() {
+            $btn.button('reset');
+        }, 3000);
+    })
+    $('#myStateButton').on('click', function () {
+        $(this).button('complete'); // button text will be "finished!"
+    })
+</script>

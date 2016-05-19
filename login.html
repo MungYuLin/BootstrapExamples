@@ -17,10 +17,34 @@
             <label for="inputPassword" class="sr-only">密码</label>
             <input type="password" id="inputPassword" class="form-control" placeholder="请输入密码" ms-duplex="LoginPwd" required>
             <div class="checkbox">
-                <label><input type="checkbox" value="remember-me">记住密码</label>
+                <label>
+                    <input type="checkbox" value="remember-me">记住密码</label>
             </div>
             <button type="button" class="btn btn-lg btn-primary btn-block" ms-click="login()">登陆</button>
         </form>
+
+        <!-- 提示Model -->
+        <div id="alertModel-MessageBox" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <h5 class="modal-title">[Title]</h5>
+                    </div>
+                    <div class="modal-body">
+                        <span class="[Icon]" style="font-size:40px; vertical-align:middle; color: [Color]"></span>
+                        <small>[Message]</small>
+                    </div>
+                    <div class="modal-footer" >
+                        <button type="button" class="btn btn-primary btn-sm ok" data-dismiss="modal">[BtnOk]</button>
+                        <button type="button" class="btn btn-default btn-sm cancel" data-dismiss="modal">[BtnCancel]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script data-main="scripts/sub.js" src="scripts/requirejs/require.min.js"></script>
 </body>

@@ -10,7 +10,6 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 /* 顶部导航栏置顶后需添加内补 */
 body {
     padding-top: 50px;
-    margin-bottom: 60px;
 }
 
 /* 去除首页tab标签两侧的padding */

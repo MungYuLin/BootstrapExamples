@@ -1,3 +1,4 @@
+/* 內容頁配置 */
 requirejs.config({
   urlArgs: "v=" + (new Date()).getTime(),
   baseUrl: 'scripts',

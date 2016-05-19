@@ -1,4 +1,4 @@
-/* 登录页配置 */
+/* 登錄頁配置 */
 requirejs.config({
   urlArgs: 'v=' + (new Date()).getTime(),
   baseUrl: 'scripts',
@@ -13,7 +13,7 @@ requirejs.config({
       deps: ['bootstrap']
     },
     'login': {
-      deps: ['avalon', 'js/config']
+      deps: ['jquery', 'avalon', 'config']
     }
   },
   paths: {
@@ -21,6 +21,7 @@ requirejs.config({
     bootstrap: "bootstrap-3.3.5/js/bootstrap.min",
     avalon: 'avalon/avalon',
     login: 'js/login',
+    config: 'js/config'
   },
 });
 

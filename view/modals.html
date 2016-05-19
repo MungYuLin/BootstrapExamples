@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">实例1：默认模态框实例</h3>
+                </div>
+                <div class="panel-body">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">显示模态框</button>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog">
+                            <!-- 通过对.modal-dialog的DIV中添加样式modal-sm、modal-lg对模态框的大小进行设置 -->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">标题</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>内容，可放置表格，表单或其他&hellip;</p>
+                                    <p>除内容modal-body外，也可对标题modal-title、底部modal-footer进行更改</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">确认</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">实例2：自定义模态框实例</h3>
+                </div>
+                <div class="panel-body">
+                    <button type="button" class="btn" id="confirmModel">自定義確認框</button>
+                    <button type="button" class="btn btn-info" id="alertModelInfo">信息</button>
+                    <button type="button" class="btn btn-success" id="alertModelSuccess">成功</button>
+                    <button type="button" class="btn btn-warning" id="alertModelWarning">警告</button>
+                    <button type="button" class="btn btn-danger" id="alertModelDanger">错误</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#confirmModel").click(function(event) {
+        objCustom.message.confirm('提示内容 提示内容').on(function (e) {
+            if(e) {
+                objCustom.message.info('你點擊了確定');
+            } else {
+                objCustom.message.warning('你點擊了取消');
+            }
+        });
+    });
+    $("#alertModelInfo").click(function(event) {
+        objCustom.message.info()
+    });
+    $("#alertModelSuccess").click(function(event) {
+        objCustom.message.success()
+    });
+    $("#alertModelWarning").click(function(event) {
+        objCustom.message.warning()
+    });
+    $("#alertModelDanger").click(function(event) {
+        objCustom.message.danger()
+    });
+</script>

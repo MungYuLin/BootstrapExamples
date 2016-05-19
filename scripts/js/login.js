@@ -1,10 +1,19 @@
-define(['jquery', 'bootstrap', 'avalon'], function() {
+define(['jquery', 'bootstrap', 'avalon', 'config'], function() {
+
     var loginVM = avalon.define({
         $id: "loginVM",
         LoginName: "",
         LoginPwd: "",
         login: function() {
-            window.location.href = "index.html";
+            if(objCustom.validation.isNullOrWhiteSpace(loginVM.LoginName)) {
+                objCustom.message.warning("登錄帳號不能爲空！")
+                return false
+            }
+            if(objCustom.validation.isNullOrWhiteSpace(loginVM.LoginPwd)) {
+                objCustom.message.warning("登錄密碼不能爲空！")
+                return false
+            }
+            window.location.href = "index.html"
         }
     })
     avalon.scan();
